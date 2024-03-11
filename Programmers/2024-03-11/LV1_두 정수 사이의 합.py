@@ -20,3 +20,5 @@ def solution(a, b):
     return answer
 
 print(solution(3,10))
+
+#https://school.programmers.co.kr/learn/courses/30/lessons/12912

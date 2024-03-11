@@ -1,0 +1,11 @@
+def solution(absolutes, signs):
+    
+    arr = []
+    for i in range(len(signs)):
+        if signs[i] == True:
+            arr.append(absolutes[i])
+        else:
+            arr.append(-absolutes[i])
+    return sum(arr)
+
+#https://school.programmers.co.kr/learn/courses/30/lessons/76501
