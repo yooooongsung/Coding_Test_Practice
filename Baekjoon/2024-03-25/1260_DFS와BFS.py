@@ -27,7 +27,6 @@ for _ in range(m):
 #for dfs
 for i in graph:
     i.sort()
-
 dfs(v)
 
 #for bfs
