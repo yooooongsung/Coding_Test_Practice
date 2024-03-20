@@ -10,8 +10,14 @@ def dfs(v):
           
     
 
-#def bfs():
-    #return
+def bfs(v):
+    visited[v] = True
+    print(v,end=' ')
+    for i in graph[v]:
+        if not visited[i]:
+            bfs(i)
+        
+        
 
 
 
@@ -24,10 +30,11 @@ for _ in range(m):
     graph[a].append(b)
     graph[b].append(a)
 
-#for dfs
 for i in graph:
     i.sort()
-dfs(v)
 
-#for bfs
+
+dfs(v)
+bfs(v)
+
 
