@@ -1,27 +1,16 @@
-n = int(input())
+block = [list(map(int,input().split())) for _ in range(9)]
 
-ans = 0
-row = [0] * n
+not_in_row = []
 
-def is_promising(x):
-    for i in range(x):
-        if row[x] == row[i] or abs(row[x] - row[i]) == abs(x - i):
-            return False
+for i in range(9):
+    for j in range(1,10):
+        if j not in block[i]:
+            not_in_row.append(j)
+
+for i in range(9):
+    for j in range(9):
+        for k in range(1,10):
+            if k not in block[j][i]:
+            
     
-    return True
-
-def n_queens(x):
-    global ans
-    if x == n:
-        ans += 1
-        return
-
-    else:
-        for i in range(n):
-            # [x, i]에 퀸을 놓겠다.
-            row[x] = i
-            if is_promising(x):
-                n_queens(x+1)
-
-n_queens(0)
-print(ans)
+print(not_in_row)
