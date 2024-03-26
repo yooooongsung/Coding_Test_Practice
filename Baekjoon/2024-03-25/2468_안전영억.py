@@ -15,8 +15,7 @@ def bfs(x,y,current): #1~real_max 사이의 (i) 값보다 큰 좌표와 그 i �
                 if m[nx][ny] > current and visited[nx][ny] == False: #그 상하좌우의 좌표값이 비교값current보다 크고, 방문한 적이 없다면
                     visited[nx][ny] = True #방문체크하고
                     deq.append((nx,ny)) #데크에 넣음
-
-
+                    
 n = int(input()) 
 m = [list(map(int, input().split())) for _ in range(n)] #격자
 
@@ -30,7 +29,7 @@ dy = [1,-1,0,0]
 
 answer = []
 
-for i in range(1,real_max): #1부터 가장 높은 높이 값까지 검사
+for i in range(real_max): #1부터 가장 높은 높이 값까지 검사
     cnt = 0
     visited = [[False] * n for _ in range(n)] #2차원 방문대장
     for j in range(n):
@@ -42,4 +41,3 @@ for i in range(1,real_max): #1부터 가장 높은 높이 값까지 검사
 
 print(max(answer)) #1~real_max값을 비교하며 생긴 안전지대중에서 가장 큰 값을 출력
 
-#https://whitehairhan.tistory.com/332
