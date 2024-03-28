@@ -7,15 +7,41 @@ switch = list(map(int,input().split()))
 students = int(input())
 sex_num = [list(map(int,input().split())) for _ in range(students)]
 
+def girl(x,sex_num):
+    
+    if sex_num - x >= 0 and sex_num + x < n and switch[sex_num - x] == switch[sex_num + x]: #만약 좌우의 스위치 상태가 같다면
+        
+        if switch[sex_num - x] == 1: #바꿈
+            switch[sex_num - x] = 0
+        else:
+            switch[sex_num - x] = 1
+        if switch[sex_num + x] == 1:
+            switch[sex_num + x] = 0
+        else:
+            switch[sex_num + x] = 1
+        girl(x+1,sex_num)
+    else:
+        return
+
 for i in range(len(sex_num)):
     if sex_num[i][0] == 1: #남학생이라면
         for j in range(1,n+1):
             if j % sex_num[i][1] == 0: #스위치 번호가 남학생 배정 스위치의 배수일 때
-                switch[j-1] = not switch[j-1] #스위치를 바꿈
+                if switch[j-1] == 1:
+                    switch[j-1] = 0
+                else:
+                    switch[j-1] = 1 #스위치를 바꿈
     else: #여학생이라면
-        girl = sex_num[i][1] - 1 #우선 본인 위치 스위치 인덱스를 담음
-        switch[girl] = not switch[girl] #그리고 스위치 상태 바꿈
-        if switch[girl-1] == switch[girl + 1]: #만약 좌우의 스위치 상태가 같다면
-            switch[girl-1] = not switch[girl-1] #바꿈
-            switch[girl + 1] = not switch[girl + 1] #바꿈
+        if switch[sex_num[i][1]-1] == 1:#본인꺼 스위치 상태 바꿈
+            switch[sex_num[i][1]-1] = 0
+        else:
+            switch[sex_num[i][1]-1] = 1 
+        girl(1,sex_num[i][1]-1) #1과 현재위치를 넘겨줌
+
+for i in range(len(switch)):
+    # 원소 출력
+    print(switch[i], end=' ')
+    # i가 0부터 시작하므로, i+1로 조건을 맞추고, 20의 배수가 될 때마다 새로운 줄로 넘어감
+    if (i + 1) % 20 == 0:
+        print()  # 새로운 줄로 넘어가기
             
