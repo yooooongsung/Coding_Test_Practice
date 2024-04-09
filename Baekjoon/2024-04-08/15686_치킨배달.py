@@ -39,7 +39,6 @@ def dfs(idx,cnt):
 
     for i in range(idx,len(chicken)):
         if not visit[i]:
-
             visit[i] = True
             dfs(i+1,cnt+1)
             visit[i]=False
