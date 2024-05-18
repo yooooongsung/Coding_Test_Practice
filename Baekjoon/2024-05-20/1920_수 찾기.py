@@ -5,28 +5,22 @@ given.sort() #1 2 3 4 5
 m = int(input())
 to_find = list(map(int,input().split(' ')))
 #to_find.sort()#1 3 5 7 9
-start = given[0]
-end = given[-1]
 
-
-def bn_search(find,start,end):
+def bn_search(given, find, start, end):
     while start <= end:
 
         mid = (start + end) // 2
-        if find == mid:
+        if find == given[mid]:
             return 1
-        if find > mid:
+        if find > given[mid]:
             start = mid + 1
-            bn_search(find,start,end)
-        elif find < mid:
+        elif find < given[mid]:
             end = mid - 1
-            bn_search(find,start,end)
         
-        elif find > end:
-            return 0
+    return None
 
-for i in to_find:
-    if bn_search(i,start,end):
+for find in to_find:
+    if bn_search(given, find, 0, n-1):
         print(1)
     else:
         print(0)
