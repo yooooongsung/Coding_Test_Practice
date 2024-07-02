@@ -9,4 +9,11 @@ for i in range(n):
             answer += j
     print(answer)
     
+#더 좋은 다른 풀이
 
+# a = int(input())
+# for i in range(a):
+#   b, c = input().split()
+#   for i in range(len(c)):
+#     print(int(b) * c[i], end='')
+#   print()
