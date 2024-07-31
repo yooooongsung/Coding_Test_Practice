@@ -1,5 +1,5 @@
 import sys
-arr = sys.stdin.readline() # << 얘는 마지막에 개행이 추가된다........
+arr = sys.stdin.readline().strip() # << strip은 개행을 없애준다.
 stack = []
 
 result = 1
