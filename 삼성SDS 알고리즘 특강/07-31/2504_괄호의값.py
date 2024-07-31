@@ -1,34 +1,36 @@
 import sys
-arr = list(sys.stdin.readline())
+arr = sys.stdin.readline() # << 얘는 마지막에 개행이 추가된다........
 stack = []
+
 result = 1
 answer = 0
+
 for i in range(len(arr)):
     if arr[i] == '(':
+        stack.append(arr[i])
         result *= 2
-        stack.append(arr[i])
+        
     elif arr[i] == '[':
-        result *= 3
         stack.append(arr[i])
+        result *= 3
+        
     elif arr[i] == ')':
         if not stack or stack[-1] == '[':  #stack[-1] 과 arr[i-1]은 같은가?
             answer = 0
             break
-        else: #여기서 else를 쓰면 안되는 이유?
-            if arr[i-1] == '(':
-                answer += result
-            stack.pop()
-            result //= 2
+        if arr[i-1] == '(':
+            answer += result
+        stack.pop()
+        result //= 2
                 
     else:
         if not stack or stack[-1] == '(':
             answer = 0
             break
-        else:
-            if arr[i-1] == '[':
-                answer += result
-            stack.pop()
-            result //= 3
+        if arr[i-1] == '[':
+            answer += result
+        stack.pop()
+        result //= 3
 if stack:
     print(0)
 else:
