@@ -1,25 +1,41 @@
 import sys
 import itertools
+
+def factorial(num):
+    if num == 0 or num == 1:
+        return 1
+    result = 1
+    for i in range(2, num + 1):
+        result *= i
+    return result
+
 n = int(sys.stdin.readline())
-m = sys.stdin.readline().split()
+m = list(map(int, sys.stdin.readline().split()))
 
-arr = []
-
-for i in range(n):
-    arr.append(i+1)
+if m[0] == 1:  # 1번 문제의 경우
+    k = m[1] - 1  # 0-indexed로 변환
+    arr = list(range(1, n + 1))
     
-cnt = 0
-x = ''
-if m[0] == '1':
-    for j in itertools.permutations(arr,n):
+    # k번째 순열 찾기
+    result = []
+    while n > 0:
+        f = factorial(n - 1)
+        idx = k // f
+        result.append(arr[idx])
+        arr.pop(idx)
+        k %= f
+        n -= 1
+    
+    print(' '.join(map(str, result)))
+
+else:  # 2번 문제의 경우
+    arr = list(map(int, m[1:]))
+    cnt = 0
+    
+    # itertools를 사용하여 순열 생성 및 카운트
+    for perm in itertools.permutations(range(1, n + 1)):
         cnt += 1
-        if int(m[1]) == cnt:
-            for i in range(n):
-                print(j[i], end=' ')
-else:
-    for i in range(1,len(m)):
-        x += i
-        
-
-
+        if perm == tuple(arr):
+            print(cnt)
+            break
     
