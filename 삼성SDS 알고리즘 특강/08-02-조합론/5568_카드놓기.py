@@ -10,5 +10,5 @@ for _ in range(n):
 
 for i in itertools.permutations(arr, k):
     answer.append(''.join(i))
-
+print(set(answer))
 print(len(set(answer)))
