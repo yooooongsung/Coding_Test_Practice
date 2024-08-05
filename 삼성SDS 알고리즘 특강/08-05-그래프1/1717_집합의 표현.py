@@ -1,16 +1,28 @@
 import sys
+sys.setrecursionlimit(1000000)
+
 n, m = map(int,input().split())
-dict = {}
+parent = [i for i in range(n+1)]
+
+def find(x):
+    if parent[x] != x:
+        parent[x] = find(parent[x])
+    return parent[x]
+
+def union(a,b):
+    a = find(a)
+    b = find(b)
+    if a < b:
+        parent[b] = a
+    else:
+        parent[a] = b
+    
 for _ in range(m):
-    num, a, b = sys.stdin.readline().split()
-    if num == '0': #합치기
-        if a in dict: #key값이 딕셔너리에 있다면
-            dict[a].append(b) #배열로 value값을 넣어줌
+    num, a, b = map(int,sys.stdin.readline().split())
+    if num == 0: #합치기
+        union(a,b)
+    elif num == 1:
+        if find(a) == find(b):
+            print('YES')
         else:
-            dict[a] = [b] #key값이 딕셔너리에 없다면, 새로 추가
-    elif num == '1':
-        check = dict.get(a) #get함수로 key 값으로 value에 접근 >> check에 저장
-        if b in check: #b 값이 check에 있다면
-            print('YES') 
-        else: #없다면
             print('NO')
