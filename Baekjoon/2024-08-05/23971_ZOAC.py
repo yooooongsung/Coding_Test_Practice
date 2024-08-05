@@ -1,9 +1,22 @@
-[0,1,2,3,4,5,6,7]
-init: 1 2 3 4 5 6 7
-zero: 1 2 1 4 5 6 7
-one : 1 2 1 4 5 6 7 >> No
-zero: 1 2 1 4 5 6 6
-one : 1 2 1 4 5 6 6 >> No
-zero: 1 2 1 4 5 1 6
-zero: 1 2 1 2 4 1 6
-zero: 1 2 1 2 4 1 6
+h, w, n, m = map(int,input().split())
+visited_h = [False] * h
+visited_w = [False] * w
+
+for i in range(0,h,n+1):
+    visited_h[i] = True
+
+for i in range(0,w,m+1):
+    visited_w[i] = True
+    i += n
+
+cnt_h = 0
+for i in range(h):
+    if visited_h[i] == True:
+        cnt_h += 1
+
+cnt_w = 0
+for i in range(w):
+    if visited_w[i] == True:
+        cnt_w += 1
+
+print(cnt_h*cnt_w)
