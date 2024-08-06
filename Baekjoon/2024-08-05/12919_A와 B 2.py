@@ -7,7 +7,7 @@ def change(t):
         print(1)
         sys.exit()
     if len(t) == 0:
-        return
+        return #재귀함수 루프 탈출
     if t[-1] == 'A':
         change(t[:-1])
     if t[0] == 'B':
