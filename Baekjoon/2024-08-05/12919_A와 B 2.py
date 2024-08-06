@@ -7,10 +7,10 @@ def change(t):
         print(1)
         sys.exit()
     if len(t) == 0:
-        print(0)
-        sys.exit()
+        return
     if t[-1] == 'A':
         change(t[:-1])
     if t[0] == 'B':
         change(t[1:][::-1])
 change(t)
+print(0)
