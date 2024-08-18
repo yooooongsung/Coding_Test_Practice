@@ -1,41 +1,17 @@
-import sys
-input = sys.stdin.readline
-n, k = map(int,input().split())
-arr = list(map(int,input().split()))
-stack = []
+N, K = map(int, input().split())
+a = list(map(int, input().split()))
+answer = 0
+start, end = 0, 0
+counter = [0] * (max(a) + 1)
 
-for i in arr:
-    if i in stack:
-        stack.append(i)
-        answer = stack.count(i)
-        if answer > k:
-            stack.pop()
-            print(len(stack))
-            break
+while end < N:
+    if counter[a[end]] < K:
+        counter[a[end]] += 1
+        end += 1
+        answer = max(answer, end - start)  # 최대 길이 업데이트
     else:
-        stack.append(i)
+        counter[a[start]] -= 1
+        start += 1
 
-
-# N, M = map(int, input().split())
-# nums = list(map(int, input().split()))
-
-# left, right = 0, 1
-# cnt = 0
-# while right<=N and left<=right:
-
-#     sum_nums = nums[left:right]
-#     total = sum(sum_nums)
-
-#     if total == M:
-#         cnt += 1
-
-#         right += 1
-
-#     elif total < M:
-#         right += 1
-
-#     else:
-#         left += 1
-
-# print(cnt)
+print(answer)
 
