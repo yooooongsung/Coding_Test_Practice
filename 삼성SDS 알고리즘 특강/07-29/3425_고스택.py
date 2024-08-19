@@ -4,6 +4,10 @@ stack = []
 
 while(1):
     x = input()
+    if x == '':
+        operation.clear()
+    if x == 'QUIT':
+        break
     if x == 'END':
         n = int(input())
         for _ in range(n):
@@ -14,12 +18,8 @@ while(1):
                 if 'NUM' in i:
                     new = i.split(' ')
                     stack.append(int(new[1]))
-                    print(stack, end=' ')
-                    print('num')
                 if i == 'DUP': #1번째 복제
                         stack.append(stack[0])
-                        print(stack, end=' ')
-                        print('dup')
                         
                 if i == 'POP': #1번쨰 팝
                         stack.pop()
@@ -32,17 +32,18 @@ while(1):
                 if i == 'ADD' and len(stack) >= 2: #1번쨰, 2번쨰 합
                         stack[-2] = stack[-2] + stack[-1]
                         stack.pop()
-                        print(stack, end=' ')
-                        print('add')
+                        
                 if i == 'SUB' and len(stack) >= 2: #1번째, 2번쨰 차
                         stack[-2] = stack[-2] - stack[-1] 
                         stack.pop()
                 if i == 'MUL' and len(stack) >= 2:
                         stack[-2] = stack[-2] * stack[-1]
                         stack.pop()
-                        print(stack, end=' ')
-                        print('mul')
+                        
                 if i == 'DIV' and len(stack) >= 2:
+                    if stack[-1] == 0:
+                          print('error')
+                          break
                     if stack[-2] < 0:
                             stack[-2] = (-stack[-2]) / stack[-1]
                             stack[-2] = -stack[-2]
@@ -60,6 +61,9 @@ while(1):
                             stack.pop()
                         
                 if i == 'MOD' and len(stack) >= 2:
+                    if stack[-1] == 0:
+                          print('error')
+                          break
                     if stack[-2] < 0:
                             stack[-2] = (-stack[-2]) % stack[-1]
                             stack[-2] = -stack[-2]
@@ -77,9 +81,14 @@ while(1):
                             stack.pop()   
             
             if len(stack) == 1:
+                if stack[0] > 1000000000:
+                      print('error')
                 print(stack[0])
+                
             else:
                 print('error')   
             stack.clear()
-        break
+
+        print()
     operation.append(x)
+
