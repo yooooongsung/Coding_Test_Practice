@@ -1,16 +1,27 @@
-n = int(input())
-arr = list(map(int,input().split()))
-stack = []
-answer = [0] * n
+b,w = map(int,input().split())
+c = 3
+while True:
+    if (((b+w) // c) - 2) * (c-2) == w:
+        r = ((b+w) // c)
+        print(r,c)
+        break
+    else:
+       c += 1
 
-for i in range(n):
-    while stack:
-        if stack[-1][1] > arr[i]:
-            answer[i] = stack[-1][0] + 1
-            break
-        else:
-            stack.pop()
-            
-    stack.append([i,arr[i]])
-print(*answer)
-            
+
+
+# 0 0 0 0 0 
+# 0 1 1 1 0
+# 0 0 0 0 0
+# 12 3
+# 5 3
+
+# 0 0 0 0 0 0 0 0
+# 0 1 1 1 1 1 1 0
+# 0 1 1 1 1 1 1 0
+# 0 1 1 1 1 1 1 0
+# 0 1 1 1 1 1 1 0
+# 0 0 0 0 0 0 0 0 
+
+#8 6
+#24 24
