@@ -27,3 +27,31 @@ dfs(1)
 
 print(len(arr)-1)
 
+#GPT 풀이
+# from collections import defaultdict, deque
+# import sys
+# input = sys.stdin.readline
+
+# n = int(input())
+# m = int(input())
+
+# graph = defaultdict(list)
+# for _ in range(m):
+#     x, y = map(int, input().split())
+#     graph[x].append(y)
+#     graph[y].append(x)
+
+# visited = [False] * (n + 1)
+# cnt = 0
+
+# def dfs(node):
+#     nonlocal cnt
+#     visited[node] = True
+#     for next_node in graph[node]:
+#         if not visited[next_node]:
+#             cnt += 1
+#             dfs(next_node)
+
+# dfs(1)
+# print(cnt)
+
