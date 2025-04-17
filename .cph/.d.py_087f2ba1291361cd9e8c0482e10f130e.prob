@@ -1,0 +1,1 @@
+{"name":"Local: d","url":"c:\\Users\\user\\Desktop\\PS\\d.py","tests":[{"id":1744851558293,"input":"4\nRDD\n4\n[1,2,3,4]\nDD\n1\n[42]\nRRD\n6\n[1,1,2,3,5,8]\nD\n0\n[]","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"c:\\Users\\user\\Desktop\\PS\\d.py","group":"local","local":true}
