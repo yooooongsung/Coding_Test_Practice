@@ -17,7 +17,7 @@ def bfs(x,y,n):
             else:
                 nx = a * dx[i-1]
             
-            if nx <= y and nx not in visited:
+            if nx <= y  and nx not in visited:
                 q.append((nx,cnt+1))
                 visited.add(nx)
     return -1
