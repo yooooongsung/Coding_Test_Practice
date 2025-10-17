@@ -1,0 +1,7 @@
+-- 코드를 입력하세요
+SELECT ANIMAL_TYPE, IF(NAME IS NULL, "No name", NAME) AS NAME, SEX_UPON_INTAKE 
+FROM ANIMAL_INS
+ORDER BY ANIMAL_ID
+
+
+#IF(조건, 조건이 참일 때 값, 조건이 거짓일 때 값)
