@@ -1,4 +1,5 @@
-#만원 단위 가격대 별 상품개수
+# 만원 단위 가격대 별 상품개수
+# 예제를 보면 천원대는 0으로 표시되기에 10000으로 나눈 몫에 10000을 곱하면 된다
 SELECT PRICE DIV 10000 * 10000 AS PRICE_GROUP, COUNT(*) AS PRODUCTS
 FROM PRODUCT
 GROUP BY PRICE_GROUP
