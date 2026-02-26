@@ -3,7 +3,7 @@ using namespace std;
 int main() {
     int n,m;
     cin >> n >> m;
-
+    cout << 1 / 2;
     vector<string> v(n);
 
     string a;
