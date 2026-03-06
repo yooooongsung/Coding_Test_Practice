@@ -18,8 +18,8 @@ int main() {
     for(const auto & it : m) {
         ans.push_back({it.first, it.second});
     }
-    sort(ans.begin(), ans.end(), 
-    [&](auto & a, auto & b) {
+    
+    sort(ans.begin(), ans.end(), [&](auto & a, auto & b) {
         if(a.second != b.second) {
             return a.second > b.second;
         }
@@ -27,6 +27,8 @@ int main() {
         auto it_b = find(v.begin(), v.end(), b.first);
         return it_a < it_b;
     });
+
+
     for(const auto & it : ans) {
         for(int i = 0; i < it.second; i++) {
             cout << it.first << " ";
