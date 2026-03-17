@@ -28,9 +28,6 @@ int main() {
         v.push_back(ip);
     }
     dfs(0);
-    // for(int i = 0; i < n; i++) {
-    //     dfs(i);
-    // }
     cout << ans;
     
     return 0;
