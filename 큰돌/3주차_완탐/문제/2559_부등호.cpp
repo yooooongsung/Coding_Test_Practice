@@ -36,8 +36,8 @@
             cin >> arr[i];
         }
         for(int i = 0; i <= 9; i++) {
-            s = "";
-            memset(visited, 0, sizeof(visited));
+            // s = "";
+            // memset(visited, 0, sizeof(visited));
             dfs(i, 0);
         }
         cout << _max << "\n" << _min;
