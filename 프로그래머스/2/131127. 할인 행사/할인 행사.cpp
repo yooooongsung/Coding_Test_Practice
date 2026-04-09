@@ -1,32 +1,27 @@
-#include <string>
-#include <vector>
-#include <iostream>
-#include <unordered_map>
-
+#include <bits/stdc++.h>
 using namespace std;
 
 int solution(vector<string> want, vector<int> number, vector<string> discount) {
     int answer = 0;
-
-    unordered_map<string, int> want_number; //비정렬 맵, unordered_map 사용, map도 사용법 똑같음
-    for (int i = 0; i < number.size(); i++) {
-        want_number[want[i]] = number[i];                                   
-    }
+    if(want.size() > discount.size()) return 0;
+    int cnt = 0;
     
-    for (int i = 0; i <= discount.size() - 10; i++) {
-        unordered_map<string,int> discount_count;
-        for (int j = i; j < i + 10; j++) {
-            discount_count[discount[j]]++;
+    for(int i : number) cnt += i;
+    
+    map<string, int> want_map;
+    for(int i = 0; i < want.size(); i++) {
+        want_map[want[i]] = number[i];
+    }
+
+    int k = 0;
+    
+    while(k <= discount.size() - cnt) {
+        map<string, int> discount_map;
+        for(int i = k; i < cnt + k; i++) {
+            discount_map[discount[i]]++;
         }
-        
-        bool valid = true;
-        for(const auto &pair : want_number) {
-            if (discount_count[pair.first] < pair.second) {
-                valid = false;
-                break;
-            } 
-        }
-        if (valid) answer++;
+        if(want_map == discount_map) answer++;
+        k++;
     }
     return answer;
 }
