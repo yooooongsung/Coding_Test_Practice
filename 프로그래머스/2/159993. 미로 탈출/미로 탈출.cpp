@@ -38,7 +38,7 @@ int solution(vector<string> maps) {
     vector<vector<int>> visited (row, vector<int> (col, 0));
     visited[start[0]][start[1]] = 1;
     bool flag = false;
-    while(!q.empty() && !flag) {
+    while(!q.empty()) {
         int x = q.front().first;
         int y = q.front().second;
         q.pop_front();
